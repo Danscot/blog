@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ post.title }} - Jiatendo Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(180deg, #3c288b, #0e1323);
+    }
+    .navbar {
+      background-image: linear-gradient(180deg, #3c288b, #2a55d8);
+      color: white;
+    }
+    .navbar a {
+      color: white;
+    }
+    .blog-header {
+      background-image: linear-gradient(180deg, #3c288b, #2a55d8);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .blog-footer {
+      padding: 40px 0;
+      text-align: center;
+      background-color: rgb(21, 21, 54);
+      color: white;
+    }
+    .blog-post {
+      margin: 30px auto;
+      padding: 20px;
+      background-color: rgb(17, 12, 75);
+      border-radius: 8px;
+      color: white;
+      max-width: 800px;
+    }
+    .blog-post h1 {
+      color: #007bff; /* Title color */
+    }
+    .blog-post p {
+      color: #ccc; /* Text color */
+    }
+    .blog-image {
+      width: 100%; /* Responsive image */
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px; /* Space below image */
+    }
+  </style>
+</head>
+<body>
+
+<!-- My Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Jiatendo Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Progression</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Forum</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Blog Post Content -->
+<div class="container mt-4">
+  <div class="blog-post">
+    <h1>{{ post.title }}</h1>
+    <p class="text-muted">By Admin | {{ post.created_at|date:"M d, Y" }}</p>
+    {% if post.img %}
+    <img src="{{ post.img.url }}" alt="Blog Image" class="blog-image">
+    {% endif %}
+    <p>{{ post.content }}</p>
+  </div>
+</div>
+
+<!-- My Footer -->
+<footer class="blog-footer">
+  <p>&copy; 2024 Jiatendo Blog</p>
+  <a href="{% url 'main' %}" class="btn btn-secondary">Back to Blog</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
